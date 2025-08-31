@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Apps Fintech</title>
+<style>
+body {font-family: Arial, sans-serif; background: #f1f5f9; text-align:center; margin:0; padding:0;}
+header {background:#007bff; color:white; padding:20px;}
+header img {width:60px; margin-bottom:10px;}
+.container {max-width:400px; margin:20px auto; background:white; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+h2 {margin-bottom:15px;}
+label {display:block; text-align:left; margin-top:10px;}
+input[type="checkbox"] {margin-right:10px;}
+a {margin-top:20px; padding:10px; width:100%; border:none; border-radius:5px; text-decoration:none; display:block; text-align:center;}
+#total {margin-top:15px; font-weight:bold; color:#333;}
+#pagoBtn {background:#ffc107; color:white;}
+#descargaBtn {background:grey; color:white; pointer-events:none;}
+#pagoBtn:hover {background:#e0a800;}
+#descargaBtn:hover {background:#28a745;}
+</style>
+</head>
+<body>
+<header>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Escudo_de_la_Rep%C3%BAblica_Argentina.svg/1024px-Escudo_de_la_Rep%C3%BAblica_Argentina.svg.png" alt="Logo">
+<h1> Apps Fintech</h1>
+<naCada apps tiene un Saldo simulado: $500.000 la compras tiene un impacto de 25 a media hora las descargas se avilitaran dedespu de que impacte nuestro pago  muchas grasias por confiar en nuestros sevsevic DARKWEBYOUS</p>
+</header>
+
+<div class="container">
+<h2>Elegí las apps que querés “instalar”</h2>
+{% for app in apps %}
+<label>
+<input type="checkbox" name="apps" value="{{app.name}}" data-amount="{{app.amount}}" onchange="updateTotal()">
+{{app.name}} - ${{app.amount}}
+</label>
+{% endfor %}
+
+<p id="total">Monto total: $0</p>
+
+<a id="pagoBtn" href="https://link.mercadopago.com.ar/desarroyadoradeapps" target="_blank">
+Ir a Mercado Pago
+</a>
+
+<a id="descargaBtn" href="/descargas">
+Descargar archivos educativos
+</a>
+</div>
+
+<script>
+function updateTotal() {
+    let checkboxes = document.querySelectorAll('input[name="apps"]:checked');
+    let total = 0;
+    checkboxes.forEach(cb => total += parseInt(cb.dataset.amount));
+    document.getElementById('total').innerText = "Monto total: $" + total;
+}
+
+document.getElementById('pagoBtn').addEventListener('click', function() {
+    setTimeout(function(){
+        let btn = document.getElementById('descargaBtn');
+        btn.style.background = "#28a745";
+        btn.style.pointerEvents = "auto";
+    }, 2000);
+});
+</script>
+</body>
+</html>
