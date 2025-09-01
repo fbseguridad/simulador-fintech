@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archivos Educativos</title>
-<style>
-body {font-family: Arial, sans-serif; background:#f1f5f9; text-align:center; margin:0; padding:0;}
-.container {max-width:400px; margin:50px auto; background:white; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
-a {display:block; margin:10px 0; padding:10px; background:#28a745; color:white; text-decoration:none; border-radius:5px;}
-a:hover {background:#218838;}
-</style>
+  <meta charset="UTF-8">
+  <title>Descargas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
-<div class="container">
-<h2>Archivos Educativos</h2>
-<p>Al abrirlos verás cómo se siente una víctima de estafa</p>
-{% for file in files %}
-<a href="/download/{{file}}">{{file}}</a>
-{% endfor %}
-</div>
+  <h1>📲 Aplicaciones disponibles</h1>
+  <p>Más de <span id="contador">10000</span> descargas!</p>
+
+  <div class="app">
+    <h2>Mercado Pago</h2>
+    <p>Saldo inicial: $150.000</p>
+    <a href="https://play.google.com/store/apps/details?id=com.mercadopago.wallet" target="_blank">Descargar</a>
+  </div>
+
+  <div class="app">
+    <h2>Ualá</h2>
+    <p>Saldo inicial: $200.000</p>
+    <a href="https://play.google.com/store/apps/details?id=com.uala" target="_blank">Descargar</a>
+  </div>
+
+  <h2>💬 Opiniones</h2>
+  <ul id="comentarios"></ul>
 </body>
 </html>
